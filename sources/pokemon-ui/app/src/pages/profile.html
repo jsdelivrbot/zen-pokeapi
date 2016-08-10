@@ -1,0 +1,53 @@
+
+<div layout="column" layout-align="center center" class="md-padding">
+    <div  layout="row" class="md-padding">
+
+    <md-card flex layout-wrap ng-show="ctrl.selected!=null">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{ctrl.selected.name}}</span>
+            </md-card-title-text>
+            <md-card-avatar>
+                <img src="{{ctrl.selected.img}}" />
+            </md-card-avatar>
+
+        </md-card-title>
+        <md-card-content>
+
+        <div layout="row" flex>
+
+            <div layout="column" layout-align="center center" layout-padding="10" ng-repeat="o in ctrl.stats">
+                <span>{{o.stats.name}}</span>
+                <ui-knob value="o.stats.baseStat" options="o.options"></ui-knob>
+
+                          <span ng-repeat="(key, average) in o.average">
+                              {{key}} :  {{average[o.stats.name]}}
+                          </span>
+
+
+            </div>
+
+
+        </div>
+            <div><p flex>Les valeurs affichées en dessous des jauges sont les moyennes calculées pour le type associé</p></div>
+
+        </md-card-content>
+
+
+    </md-card>
+
+
+    <!-- List of live tweets -->
+    <div ng-include="'src/pages/tweets.html'"
+         flex="33" >
+    </div>
+
+
+</div>
+
+    <div flex id="commentsCard" ng-include="'src/pages/comments.html'">
+    </div>
+
+    <md-progress-circular flex ng-disabled="ctrl.selected!=null" md-diameter="96"></md-progress-circular>
+
+</div>

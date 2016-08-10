@@ -1,0 +1,45 @@
+<div ng-controller="CommentsController as ctrl" layout="column" ng-cloak class="md-inline-form">
+    <md-card flex="100" ng-show="selected!=null">
+
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Commentaires</span>
+            </md-card-title-text>
+        </md-card-title>
+
+        <md-content>
+            <form name="commentForm" ng-submit="postComment()">
+                <div layout="column">
+                    <div layout="row">
+                        <md-input-container class="md-block" flex-gt-xs>
+                            <label>Auteur</label>
+                            <input required name="author" ng-model="comment.author" >
+                            <div ng-messages="commentForm.author.$error">
+                                <div ng-message="required">Veuillez entrer un auteur</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container class="md-block" flex-gt-xs>
+                            <label>Commentaire</label>
+                            <input required name="comment" ng-model="comment.comment" >
+                            <div ng-messages="commentForm.comment.$error">
+                                <div ng-message="required">Veuillez entrer un commentaire</div>
+                            </div>
+                        </md-input-container>
+
+                    </div>
+
+                </div>
+
+                    <md-button  type="submit" class="md-raised"">Ajouter</md-button>
+            </form>
+
+            <md-list layout-align="center center">
+                <md-list-item ng-show="ctrl.comments.length==0">Aucun commentaire actuellement</md-list-item>
+                <md-list-item animate ng-repeat="comment in ctrl.comments">
+                    {{comment.author}} : {{comment.comment}}
+                </md-list-item>
+            </md-list>
+
+        </md-content>
+    </md-card>
+</div>

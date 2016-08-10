@@ -1,0 +1,30 @@
+version: '2'
+services :
+  mongo:
+    image: mongo
+    command: --smallfiles
+    ports:
+      - "27017:27017"
+
+  mongo-seed:
+    build: ./mongo-seed
+    links:
+      - mongo
+      
+  server:
+    build: ./server
+    ports:
+      - "9999:9999"
+    environment:
+      - "-Dspring.data.mongodb.host=mongo"
+    links:
+      - mongo
+      
+  nginx:
+    build: 
+      context: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - server

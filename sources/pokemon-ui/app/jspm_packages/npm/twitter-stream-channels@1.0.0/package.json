@@ -1,0 +1,50 @@
+{
+  "name": "twitter-stream-channels",
+  "version": "1.0.0",
+  "description": "Manage multiple filters on the same Twitter stream",
+  "keywords": [
+    "twitter",
+    "api",
+    "stream",
+    "filter"
+  ],
+  "author": {
+    "name": "Christophe Rosset"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/topheman/twitter-stream-channels.git"
+  },
+  "bugs": {
+    "url": "https://github.com/topheman/twitter-stream-channels/issues"
+  },
+  "dependencies": {
+    "twit": "^2.1.0"
+  },
+  "main": "./lib/TwitterStreamChannels",
+  "scripts": {
+    "yuidoc": "node_modules/.bin/yuidoc",
+    "test": "node_modules/.bin/jasmine-node spec/offline --verbose --config highSpeed true",
+    "test-watch": "node_modules/.bin/jasmine-node spec/offline --autotest --config highSpeed true --watch .",
+    "test-online": "node_modules/.bin/jasmine-node spec/online --verbose"
+  },
+  "yuidoc":{
+    "options":{
+      "linkNatives": "true",
+      "attributesEmit": "false",
+      "selleck": "false",
+      "paths": [
+        "./lib",
+        "./mocks"
+      ],
+      "outdir": "./yuidoc",
+      "themedir" : "./extras/yuidoc-theme-topheman"
+    }
+  },
+  "homepage": "http://labs.topheman.com/twitter-stream-channels/",
+  "devDependencies": {
+    "jasmine-node": "^1.14.5",
+    "yuidocjs": "^0.9.0"
+  }
+}

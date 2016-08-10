@@ -1,0 +1,32 @@
+<div flex layout="column" ng-controller="MainController as ctrl">
+
+
+  <div flex layout="column">
+
+      <md-content flex id="content">
+
+        <form ng-submit="$event.preventDefault()">
+        <md-autocomplete
+            ng-disabled="ctrl.isDisabled"
+            md-no-cache="ctrl.noCache"
+            md-search-text="ctrl.searchText"
+            md-selected-item-change="ctrl.selectedItemChange(item)"
+
+            md-items="item in ctrl.querySearch(ctrl.searchText)"
+            md-item-text="item.name"
+            md-min-length="0"
+            placeholder="Quel Pokemon souhaitez-vous afficher ?">
+          <md-item-template>
+            <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.name}}</span>
+          </md-item-template>
+          <md-not-found>
+            Aucun Pokemon ne porte le nom "{{ctrl.searchText}}".
+          </md-not-found>
+        </md-autocomplete>
+        <br/>
+      </form>
+      </md-content>
+
+
+  </div>
+</div>

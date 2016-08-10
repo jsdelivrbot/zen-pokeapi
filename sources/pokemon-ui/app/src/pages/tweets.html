@@ -1,0 +1,30 @@
+
+
+    <md-card flex="33" ng-controller="TweetsController as ctrl">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Live tweets</span>
+            </md-card-title-text>
+            <md-card-title-media>
+                <md-icon md-svg-icon="twitter"></md-icon>
+            </md-card-title-media>
+            </md-card-title>
+
+                <md-card-content>
+            <md-list>
+                <md-list-item animate ng-repeat="tweet in ctrl.tweets">
+                    <div class="md-tile-left inset" hide-sm>
+                        <md-card-avatar>
+                            <img src="{{tweet.img}}" />
+                        </md-card-avatar>
+                    </div>
+                    <div class="md-tile-content">
+                       <p>{{tweet.text}}</p>
+                    </div>
+
+                </md-list-item>
+
+            </md-list>
+                    <p ng-show="ctrl.onError"> Une erreur est survenue lors de la récupération des Tweets.</p>
+        </md-card-content>
+    </md-card>
